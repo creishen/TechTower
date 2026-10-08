@@ -1,0 +1,11 @@
+{
+  "title": "TechProTower",
+  "description": "This web application allows users to create and customize mockups based on specific file requirements, streamlining design processes for professionals.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": true,
+    "ignoreReducedMotion": false
+  }
+}

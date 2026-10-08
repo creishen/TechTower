@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  /* ── Arcane Dungeon Palette ──────────────────────── */
+  --color-abyss:        #090A0F;
+  --color-dungeon:      #131722;
+  --color-dungeon-mid:  #1A2235;
+  --color-stone:        #262E40;
+  --color-stone-light:  #3D4B63;
+  --color-silver:       #94A3B8;
+  --color-parchment:    #F8FAFC;
+
+  --color-arcane:       #6366F1;
+  --color-arcane-light: #818CF8;
+  --color-crimson:      #EF4444;
+  --color-crimson-deep: #DC2626;
+  --color-gold:         #F59E0B;
+  --color-gold-bright:  #FCD34D;
+  --color-emerald:      #10B981;
+  --color-void:         #A855F7;
+  --color-sky:          #0EA5E9;
+
+  /* Legacy aliases */
+  --color-obsidian:     #090A0F;
+  --color-slate-surface:#131722;
+  --color-slate-hover:  #262E40;
+  --color-slate-muted:  #3D4B63;
+  --color-slate-dim:    #64748B;
+  --color-amber:        #F59E0B;
+  --color-amber-dim:    #92400E;
+  --color-indigo:       #6366F1;
+  --color-coral:        #EF4444;
+
+  --font-pixel:  'Press Start 2P', monospace;
+  --font-cinzel: 'Cinzel', serif;
+  --font-sans:   'Inter', sans-serif;
+  --font-mono:   'JetBrains Mono', monospace;
+}
+
+/* ── Base Setup ────────────────────────────────────── */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-abyss);
+  color: var(--color-parchment);
+  min-width: 320px;
+}
+
+/* ── Fluid Typography & Layout Defaults ────────────── */
+.text-clamp-sm  { font-size: clamp(11px, 1.4vw, 13px); }
+.text-clamp-md  { font-size: clamp(13px, 1.6vw, 15px); }
+.text-clamp-lg  { font-size: clamp(15px, 2vw, 18px); }
+
+.pane-padding {
+  padding: clamp(12px, 2.5vw, 24px);
+}
+
+.auth-scroll-wrap {
+  overflow-y: auto;
+  max-height: 100dvh;
+  padding: clamp(8px, 3vw, 24px);
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   RESPONSIVE BREAKPOINTS (Mobile & Tablet Support)
+   ===================================================== */
+
+/* ── 1. Small Mobile (max-width: 480px) ─────────────── */
+@media (max-width: 480px) {
+  .notif-dropdown {
+    position: fixed !important;
+    left: 12px !important;
+    right: 12px !important;
+    top: 60px !important;
+    width: auto !important;
+  }
+
+  .battle-actions > * {
+    flex: 1 1 100% !important;
+  }
+}
+
+/* ── 2. Standard Mobile (max-width: 640px) ──────────── */
+@media (max-width: 640px) {
+  .chat-sidebar {
+    display: none !important;
+  }
+
+  .header-hud-full { 
+    display: none !important; 
+  }
+  
+  .header-hud-mini { 
+    display: flex !important; 
+  }
+
+  .battle-actions {
+    flex-wrap: wrap;
+  }
+  
+  .battle-actions > * {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 120px;
+  }
+}
+
+@media (min-width: 641px) {
+  .header-hud-mini { 
+    display: none !important; 
+  }
+}
+
+/* ── 3. Phablets & Small Tablets (max-width: 768px) ─── */
+@media (max-width: 768px) {
+  .two-pane {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  
+  .two-pane > * {
+    width: 100% !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--color-stone);
+  }
+  
+  .two-pane > *:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ── 4. Tablet Portrait & Landscape (641px to 1024px) ─ */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .chat-sidebar {
+    width: 220px !important;
+    flex-shrink: 0;
+  }
+
+  .battle-layout {
+    flex-direction: column !important;
+  }
+
+  .battle-side-panel {
+    width: 100% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-left: none !important;
+    border-top: 1px solid var(--color-stone);
+  }
+}
+
+/* ── 5. Standard Tablet/Laptop Threshold (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .battle-layout {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+  }
+  
+  .battle-side-panel {
+    width: 100% !important;
+    border-left: none !important;
+    border-top: 1px solid var(--color-stone);
+  }
+}
+
+/* =====================================================
+   UTILITIES & ANIMATIONS
+   ===================================================== */
+
+.font-pixel { font-family: var(--font-pixel); }
+.font-cinzel { font-family: var(--font-cinzel); letter-spacing: 0.03em; }
+.font-mono-custom { font-family: var(--font-mono); }
+
+.scrollbar-hide { scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+.pixel-crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Glow Utilities */
+.arcane-glow { box-shadow: 0 0 12px rgba(99,102,241,0.35), 0 0 24px rgba(99,102,241,0.15); }
+.gold-glow   { box-shadow: 0 0 10px rgba(245,158,11,0.4), 0 0 20px rgba(245,158,11,0.15); }
+.crimson-glow{ box-shadow: 0 0 10px rgba(239,68,68,0.35), 0 0 20px rgba(239,68,68,0.12); }
+.void-glow   { box-shadow: 0 0 12px rgba(168,85,247,0.4), 0 0 24px rgba(168,85,247,0.15); }
+
+/* Keyframe Animations */
+@keyframes coin-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.coin-bounce { animation: coin-bounce 1.4s ease-in-out infinite; display: inline-block; }
+
+@keyframes flame-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.flame-pulse { animation: flame-pulse 1s ease-in-out infinite; display: inline-block; }
+
+@keyframes arcane-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(99,102,241,0.4); }
+  50%       { box-shadow: 0 0 18px rgba(129,140,248,0.7), 0 0 32px rgba(99,102,241,0.25); }
+}
+.arcane-pulse { animation: arcane-pulse 2s ease-in-out infinite; }
+
+@keyframes tile-ready-pulse {
+  0%, 100% { box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 0 0 0 rgba(86,224,106,0.6); }
+  50% { box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 0 0 5px rgba(86,224,106,0); }
+}
+.tile-ready { animation: tile-ready-pulse 1.8s ease-in-out infinite; }
+
+@keyframes water-shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+.water-shimmer { animation: water-shimmer 2s ease-in-out infinite; }
+
+@keyframes enemy-hit {
+  0%   { transform: translateX(0) scale(1);       filter: brightness(1); }
+  20%  { transform: translateX(14px) scale(0.93); filter: brightness(4) saturate(0); }
+  55%  { transform: translateX(-8px) scale(1.04); filter: brightness(2) hue-rotate(20deg); }
+  100% { transform: translateX(0) scale(1);       filter: brightness(1); }
+}
+.enemy-hit { animation: enemy-hit 0.45s ease; }
+
+@keyframes float-dmg {
+  0%   { opacity: 1;   transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0;   transform: translateX(-50%) translateY(-52px); }
+}
+.float-dmg { animation: float-dmg 1.05s ease-out forwards; }
+
+@keyframes player-lunge {
+  0%, 100% { transform: translateX(0); }
+  40%       { transform: translateX(18px); }
+}
+.player-lunge { animation: player-lunge 0.3s ease; }
+
+@keyframes victory-pop {
+  0%   { transform: scale(0.65); opacity: 0; }
+  70%  { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.victory-pop { animation: victory-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+@keyframes sound-bar-0 { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
+@keyframes sound-bar-1 { 0% { transform: scaleY(0.6); } 100% { transform: scaleY(0.2); } }
+@keyframes sound-bar-2 { 0% { transform: scaleY(1); } 100% { transform: scaleY(0.4); } }
+
+@keyframes rune-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.rune-shimmer {
+  background: linear-gradient(90deg, #6366F1 0%, #818CF8 40%, #FCD34D 50%, #818CF8 60%, #6366F1 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rune-shimmer 3s linear infinite;
+}
